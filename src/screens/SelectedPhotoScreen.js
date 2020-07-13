@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Image } from "react-native"
 
 import { getSelectedDataaction } from "../store/actions/getDataActions"
 import { useDispatch, useSelector, dispatch } from "react-redux"
+import { cleanPhoto } from "../store/actions/cleanPhotosAction"
 
 import { Loader } from "../assets/Loader"
 
@@ -22,7 +23,9 @@ export const SelectedPhotoScreen = ({ navigation, route }) => {
     
     useEffect(()=>{
         dispatch(getSelectedDataaction(id))
-        return () => {}
+        return () => {
+            dispatch(cleanPhoto())
+        }
     }, [])
 
 
